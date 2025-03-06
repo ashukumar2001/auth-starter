@@ -1,0 +1,13 @@
+{
+  "name": "auth-starter",
+  "type": "module",
+  "files": [
+    "./client/*",
+    "./server/*"
+  ],
+  "scripts": {
+    "dev": "cd client && bun run dev",
+    "install": "cd client && bun install",
+    "postinstall": "cd server && bun install"
+  }
+}
