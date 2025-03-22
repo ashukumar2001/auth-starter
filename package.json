@@ -6,7 +6,8 @@
     "./server/*"
   ],
   "scripts": {
-    "dev": "cd client && bun run dev",
+    "dev:client": "cd client && bun run dev",
+    "dev:server": "cd server && npm run dev",
     "install": "cd client && bun install",
     "postinstall": "cd server && bun install"
   }
