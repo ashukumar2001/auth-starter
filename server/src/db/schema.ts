@@ -45,3 +45,12 @@ export const verification = sqliteTable("verification", {
     createdAt: integer('created_at', { mode: 'timestamp' }),
     updatedAt: integer('updated_at', { mode: 'timestamp' })
 });
+
+
+export const foodEntry = sqliteTable("foodEntry", {
+    id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+    name: text('name').notNull(),
+    calories: integer("calories").notNull(),
+    timestamp: integer('timestamp', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+    userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
+});
