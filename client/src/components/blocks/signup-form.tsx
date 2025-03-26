@@ -19,8 +19,8 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import authClient from "@/lib/auth-client";
-import { getFullURL } from "@/lib/get-full-url";
+import { getFullURL } from "@/lib/utils";
+import { signUp } from "@/lib/auth-client";
 const formSchema = z.object({
   name: z.string().min(3).max(40),
   email: z.string().email(),
@@ -37,10 +37,7 @@ export default function SignupForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-
-    const { data, error } = await authClient.signUp.email(
+    const { data, error } = await signUp.email(
       {
         ...values,
         callbackURL: getFullURL("/dashboard"),
@@ -126,7 +123,7 @@ export default function SignupForm() {
           Already have an acccount?&nbsp;
           <Link
             className="underline hover:no-underline text-primary"
-            to="/auth/login"
+            to="/login"
           >
             Sign in
           </Link>

@@ -1,24 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Hero } from "@/components/blocks/hero";
+import { Button } from "@/components/ui/button";
+import { createFileRoute, Link } from "@tanstack/react-router";
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
 function Index() {
   return (
-    <Hero
-      title="Auth Starter Template"
-      subtitle="Transform your workflow with intelligent automation. Simple, powerful, reliable."
-      actions={[
-        {
-          label: "Get Started",
-          href: "/auth/login",
-          variant: "default",
-        },
-      ]}
-      titleClassName="text-5xl md:text-6xl font-extrabold"
-      subtitleClassName="text-lg md:text-xl max-w-[600px]"
-      actionsClassName="mt-8"
-    />
+    <section className="size-full flex flex-col min-h-screen justify-center items-center gap-3">
+      <h1 className="text-center text-4xl font-bold">Macro Tracker</h1>
+      <Button asChild>
+        <Link to="/login">Get Started</Link>
+      </Button>
+    </section>
   );
 }

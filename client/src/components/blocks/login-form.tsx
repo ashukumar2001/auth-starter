@@ -20,7 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import authClient from "@/lib/auth-client";
+import { signIn } from "@/lib/auth-client";
 import { toast } from "sonner";
 const formSchema = z.object({
   email: z.string().email(),
@@ -36,7 +36,7 @@ export default function LoginForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { error } = await authClient.signIn.email({
+    const { error } = await signIn.email({
       ...values,
       callbackURL: "/dashboard",
     });
@@ -100,7 +100,7 @@ export default function LoginForm() {
           Don&apos;t have an account?&nbsp;
           <Link
             className="underline hover:no-underline text-primary"
-            to="/auth/signup"
+            to="/signup"
           >
             Sign up
           </Link>

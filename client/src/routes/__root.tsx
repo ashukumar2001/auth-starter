@@ -1,13 +1,13 @@
-import { Toaster } from "@/components/ui/sonner";
-import { createRootRoute, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+import { Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <Toaster />
-      <TanStackRouterDevtools />
-    </>
-  ),
+  component: RootComponent,
 });
+
+function RootComponent() {
+  return (
+    <main className="min-h-screen w-full flex flex-col items-center justify-center">
+      <Outlet />
+    </main>
+  );
+}

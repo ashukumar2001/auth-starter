@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import authClient from "@/lib/auth-client";
+import { useSession } from "@/lib/auth-client";
+import { handleSignOut } from "@/lib/utils";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_protected/dashboard")({
@@ -7,10 +8,11 @@ export const Route = createFileRoute("/_protected/dashboard")({
 });
 
 function RouteComponent() {
+  const { data } = useSession();
   return (
     <div>
-      <h1 className="text-2xl">Fuckin protected</h1>
-      <Button onClick={() => authClient.signOut()}>Sign out</Button>
+      <h1>Hello {data?.user.name}!</h1>
+      <Button onClick={handleSignOut}>Log out</Button>
     </div>
   );
 }
